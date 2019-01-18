@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Lab 2</string>
     <string name="hello_message">Hello world</string>
+    <string name="here_are_my_widgets">Here are my widgets:</string>
+    <string name="button">button</string>
+    <string name="todo">TODO</string>
+    <string name="check_this_out">Check this out!</string>
+    <string name="switch_on_off">Switch on/off</string>
+    <string name="type_your_answer_here">Type your answer here</string>
 </resources>

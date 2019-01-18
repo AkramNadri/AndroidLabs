@@ -3,5 +3,11 @@
     <resources>
     <string name="app_name">Lab 2</string>
     <string name="hello_message">Bonjour</string>
+    <string name="here_are_my_widgets">Je suis widgets</string>
+    <string name="button">button</string>
+    <string name="todo">TODO</string>
+    <string name="check_this_out">Check this out!</string>
+    <string name="switch_on_off">Switch on/off</string>
+    <string name="type_your_answer_here">Les answer here</string>
 
 </resources>

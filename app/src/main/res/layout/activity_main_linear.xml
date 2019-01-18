@@ -45,7 +45,7 @@
         android:layout_height="wrap_content">
 
         <CheckBox
-            android:layout_width="202dp"
+            android:layout_width="206dp"
             android:layout_height="wrap_content"
             android:text="Check this out!" />
 
