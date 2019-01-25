@@ -7,4 +7,10 @@
     <string name="check_this_out">Check this out!</string>
     <string name="switch_on_off">Switch on/off</string>
     <string name="type_your_answer_here">Type your answer here</string>
+    <string name="login">LOGIN</string>
+    <string name="type_password_here">Type password here</string>
+    <string name="type_your_address">Type your address:</string>
+    <string name="enter_your_email_address">Enter your email address:</string>
+    <string name="type_email_here">Type email here</string>
+
 </resources>
