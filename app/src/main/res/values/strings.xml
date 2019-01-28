@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Lab 2</string>
     <string name="hello_message">Hello world</string>
     <string name="here_are_my_widgets">Here are my widgets:</string>
@@ -12,5 +12,6 @@
     <string name="type_your_address">Type your address:</string>
     <string name="enter_your_email_address">Enter your email address:</string>
     <string name="type_email_here">Type email here</string>
+    <string name="sharedEmail" tools:ignore="MissingTranslation"></string>
 
 </resources>
