@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
         emailInput.setHint(sharedEmail);
 
+        button nextButton =(button)findViewById(R.id.nextPageButton);
+        nextButton.setOnClickListener (b ->)
+
     }
 
     @Override
@@ -32,7 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
+
         editor.putString(getString(R.string.sharedEmail), emailInput.getText().toString());
+
+
+       // will write to disk
         editor.commit();
     }
 

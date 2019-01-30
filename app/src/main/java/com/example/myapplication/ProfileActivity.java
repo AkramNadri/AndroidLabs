@@ -35,11 +35,10 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-    public static final String ACTIVITY_NAME = "ProfileActivity";
-    Log.e(ACTIVITY_NAME, "In function:" + onCreate);
-
     //You will have to create a static String variable called ACTIVITY_NAME,
     // and set it equal to the Activity’s name. In this case:
+    public static final String ACTIVITY_NAME = "ProfileActivity";
+    Log.e(ACTIVITY_NAME, "In function:" + onCreate);
 
 
 }
