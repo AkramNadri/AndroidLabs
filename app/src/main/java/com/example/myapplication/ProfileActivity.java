@@ -1,12 +1,18 @@
 package com.example.myapplication;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    public static final String ACTIVITY_NAME = "ProfileActivity";
 
     ImageButton mImageButton;
 
@@ -14,7 +20,20 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        Intent fromPrev = getIntent();
+
+        String prevTyped = fromPrev.getStringExtra("emailTyped");
+
+        EditText enterText = (EditText) findViewById(R.id.line2);
+        enterText.setText(prevTyped);
+
         mImageButton = findViewById(R.id.image_capture_button);
+
+        dispatchTakePictureIntent();
+
+
+
     }
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -35,10 +54,6 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-    //You will have to create a static String variable called ACTIVITY_NAME,
-    // and set it equal to the Activity’s name. In this case:
-    public static final String ACTIVITY_NAME = "ProfileActivity";
-    Log.e(ACTIVITY_NAME, "In function:" + onCreate);
 
 
 }
