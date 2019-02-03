@@ -6,6 +6,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -16,6 +17,11 @@ public class ProfileActivity extends AppCompatActivity {
 
     ImageButton mImageButton;
 
+    public  void takePic (View view){
+        dispatchTakePictureIntent();
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,14 +31,10 @@ public class ProfileActivity extends AppCompatActivity {
 
         String prevTyped = fromPrev.getStringExtra("emailTyped");
 
-        EditText enterText = (EditText) findViewById(R.id.line2);
+        EditText enterText = (EditText) findViewById(R.id.line3);
         enterText.setText(prevTyped);
 
         mImageButton = findViewById(R.id.image_capture_button);
-
-        dispatchTakePictureIntent();
-
-
 
     }
 

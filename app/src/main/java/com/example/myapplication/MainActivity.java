@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
             Intent nextPage = new Intent(MainActivity.this, ProfileActivity.class);
             line2 = (EditText) findViewById(R.id.line2);
             nextPage.putExtra("emailTyped", line2.getText().toString());
-            startActivityForResult(nextPage, 345);
-
+//            startActivityForResult(nextPage, 345);
+            startActivity(nextPage);
         });
     }
 
