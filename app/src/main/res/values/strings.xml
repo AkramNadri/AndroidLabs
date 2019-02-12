@@ -13,5 +13,8 @@
     <string name="enter_your_email_address">Enter your email address:</string>
     <string name="type_email_here">Type email here</string>
     <string name="sharedEmail" tools:ignore="MissingTranslation"></string>
+    <string name="send">SEND</string>
+    <string name="receive">RECEIVE</string>
+    <string name="type_here">Type here</string>
 
 </resources>
