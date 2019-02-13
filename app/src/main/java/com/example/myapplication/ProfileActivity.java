@@ -1,4 +1,4 @@
-package com.example.myapplication.;
+package com.example.myapplication;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -35,8 +35,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         mImageButton = findViewById(R.id.image_capture_button);
 
-        Button chatroom = (Button)findViewById(R.id.gotochat);
-        chatroom.setOnClickListener( c -> {
+        Button gotochat = (Button)findViewById(R.id.gotochat);
+        gotochat.setOnClickListener( c -> {
 
             Intent nextPage = new Intent(ProfileActivity.this, ChatRoomActivity.class);
 

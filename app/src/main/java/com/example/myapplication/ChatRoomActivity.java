@@ -1,82 +1,107 @@
-package com.example.myapplication.;
+package com.example.myapplication;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+
+import java.util.ArrayList;
+
 public class ChatRoomActivity extends AppCompatActivity {
 
-    int numObjects = 10;
-    EditText chatbox;
-    EditText message;
+    EditText chatMess;
+    ListView theList;
+    ArrayList<Message> messages;
+    MyOwnAdapter adapter;
+
+
+    public void sendMessage(View v) {
+        String text = chatMess.getText().toString();
+        if (!text.equals("")) {
+            Message m = new Message(text, true);
+            messages.add(m);
+            theList.setAdapter(adapter);
+            chatMess.setText("");
+        }
+    }
+
+    public void receiveMessaage(View v) {
+        String text = chatMess.getText().toString();
+        if (!text.equals("")) {
+            Message m = new Message(text, false);
+
+            messages.add(m);
+            theList.setAdapter(adapter);
+            chatMess.setText("");
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
 
-        ListAdapter adt = new MyOwnAdapter();
+        chatMess = findViewById(R.id.chatMess);
 
-        ListView theList = (ListView) findViewById(R.id.the_list);
+        theList = findViewById(R.id.the_list);
 
-        theList.setAdapter(adt);
+        messages = new ArrayList<>();
 
-        Button nextButton =(Button) findViewById(R.id.send);
-        nextButton.setOnClickListener ((btn)->{
+        adapter = new MyOwnAdapter(messages);
 
-            Intent nextPage = new Intent(ChatRoomActivity.this, Message.class);
-            message = (EditText) findViewById(R.id.message);
-            nextPage.putExtra("send", message.getText().toString());
-//            startActivityForResult(nextPage, 345);
-            startActivity(nextPage);
-        });
+        theList.setAdapter(adapter);
+
     }
 
-    protected class MyOwnAdapter extends BaseAdapter
-    {
+    protected class MyOwnAdapter extends BaseAdapter {
+        private ArrayList<Message> messages;
+
+        public MyOwnAdapter(ArrayList<Message> messages) {
+            this.messages = messages;
+        }
 
         @Override
         public int getCount() {
-            return numObjects;
+            return messages.size();
         }
 
-        public Object getItem(int position){
-            return android.R.id.message + position;
+        @Override
+        public Object getItem(int position) {
+            return messages.get(position);
         }
 
-        public View getView(int position, View old, ViewGroup parent)
-        {
-            LayoutInflater inflater = getLayoutInflater();
-
-            View newView = inflater.inflate(R.layout.activity_chat_room, parent, false );
-
-
-            TextView rowText = (TextView)newView.findViewById(R.id.typeHere);
-            String stringToShow = getItem(position).toString();
-            rowText.setText( stringToShow );
-            //return the row:
-            return newView;
-        }
-
-        public long getItemId(int position)
-        {
+        @Override
+        public long getItemId(int position) {
             return position;
         }
-    }
 
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater inflater = getLayoutInflater();
+            View v = inflater.inflate(R.layout.single_row, parent, false);
+
+            ImageView sendPic = v.findViewById(R.id.sendPic);
+            ImageView receivePic = v.findViewById(R.id.receivePic);
+            TextView messShow = v.findViewById(R.id.messShow);
+
+            Message m = messages.get(position);
+            messShow.setText(m.getText());
+
+            if (m.isSend() == true) {
+                receivePic.setVisibility(View.INVISIBLE);
+                messShow.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+            } else sendPic.setVisibility(View.INVISIBLE);
+
+            return v;
+        }
+    }
 
 
 }

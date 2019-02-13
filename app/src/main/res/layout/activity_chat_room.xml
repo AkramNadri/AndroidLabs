@@ -9,34 +9,40 @@
 
     <ListView
         android:id="@+id/the_list"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <Button
-        android:id="@+id/send"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/send" />
+        android:baselineAligned="false"
+        android:gravity="bottom"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/typeHere"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="11"
-        android:hint="@string/type_here"
-        android:inputType="" />
+        <Button
+            android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="sendMessage"
+            android:text="@string/send" />
 
-    <Button
-        android:id="@+id/receive"
-        android:layout_weight="1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/receive" />
-</LinearLayout>
+        <EditText
+            android:id="@+id/chatMess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="11"
+            android:hint="@string/type_here"
+            android:inputType="" />
+
+        <Button
+            android:id="@+id/receive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="receiveMessaage"
+            android:text="@string/receive" />
+    </LinearLayout>
 
 </LinearLayout>
