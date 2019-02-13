@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -16,7 +16,6 @@ public class ProfileActivity extends AppCompatActivity {
     public static final String ACTIVITY_NAME = "ProfileActivity";
 
     ImageButton mImageButton;
-
     public  void takePic (View view){
         dispatchTakePictureIntent();
 
@@ -35,6 +34,15 @@ public class ProfileActivity extends AppCompatActivity {
         enterText.setText(prevTyped);
 
         mImageButton = findViewById(R.id.image_capture_button);
+
+        Button chatroom = (Button)findViewById(R.id.gotochat);
+        chatroom.setOnClickListener( c -> {
+
+            Intent nextPage = new Intent(ProfileActivity.this, ChatRoomActivity.class);
+
+            //Now make the transition:
+            startActivityForResult( nextPage, 345);
+        });
 
     }
 
@@ -55,7 +63,4 @@ public class ProfileActivity extends AppCompatActivity {
             mImageButton.setImageBitmap(imageBitmap);
         }
     }
-
-
-
 }
