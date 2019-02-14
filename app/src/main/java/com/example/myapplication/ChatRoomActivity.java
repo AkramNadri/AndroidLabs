@@ -21,7 +21,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     ArrayList<Message> messages;
     MyOwnAdapter adapter;
 
-
+    // query goes in here
     public void sendMessage(View v) {
         String text = chatMess.getText().toString();
         if (!text.equals("")) {
@@ -32,6 +32,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         }
     }
 
+    // query goes in here
     public void receiveMessaage(View v) {
         String text = chatMess.getText().toString();
         if (!text.equals("")) {
@@ -43,6 +44,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         }
     }
 
+    // query goes in here
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +65,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     protected class MyOwnAdapter extends BaseAdapter {
         private ArrayList<Message> messages;
 
-        public MyOwnAdapter(ArrayList<Message> messages) {
+        public MyOwnAdapter (ArrayList<Message> messages) {
             this.messages = messages;
         }
 
