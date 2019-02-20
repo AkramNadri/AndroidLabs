@@ -8,10 +8,9 @@ import android.util.Log;
 public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "MyDatabaseFile";
     public static final int VERSION_NUM = 1;
-    public static final String TABLE_NAME = "Contacts";
+    public static final String TABLE_NAME = "Messages";
     public static final String COL_ID = "_id";
-    public static final String COL_NAME = "NAME";
-    public static final String COL_EMAIL = "EMAIL";
+    public static final String COL_MESSAGES = "MESSAGES";
 
 
     public MyDatabaseOpenHelper(Activity ctx){
@@ -24,7 +23,7 @@ public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
         //Make sure you put spaces between SQL statements and Java strings:
         db.execSQL("CREATE TABLE " + TABLE_NAME +
                 "( "  + COL_ID +" INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + COL_NAME + " TEXT, " + COL_EMAIL + " TEXT)");
+                + COL_MESSAGES + " TEXT ) ");
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
