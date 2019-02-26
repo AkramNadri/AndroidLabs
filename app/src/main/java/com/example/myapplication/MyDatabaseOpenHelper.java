@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.IntegerRes;
 import android.util.Log;
 
 public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
@@ -11,7 +12,7 @@ public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "Messages";
     public static final String COL_ID = "_id";
     public static final String COL_MESSAGES = "MESSAGES";
-
+    public static final String COL_ISSEND = "ISSEND";
 
     public MyDatabaseOpenHelper(Activity ctx){
         //The factory parameter should be null, unless you know a lot about Database Memory management
@@ -22,8 +23,8 @@ public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
     {
         //Make sure you put spaces between SQL statements and Java strings:
         db.execSQL("CREATE TABLE " + TABLE_NAME +
-                "( "  + COL_ID +" INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + COL_MESSAGES + " TEXT ) ");
+                "( "  + COL_ID +" INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COL_MESSAGES + " TEXT, " + COL_ISSEND + " INTEGER)" );
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)

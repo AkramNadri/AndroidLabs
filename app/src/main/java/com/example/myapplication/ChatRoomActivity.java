@@ -89,13 +89,14 @@ public class ChatRoomActivity extends AppCompatActivity {
         SQLiteDatabase db = dbOpener.getWritableDatabase();
 
         //Query results from database
-        String [] columns = {MyDatabaseOpenHelper.COL_ID, MyDatabaseOpenHelper.COL_MESSAGES};
+        String [] columns = {MyDatabaseOpenHelper.COL_ID, MyDatabaseOpenHelper.COL_MESSAGES, MyDatabaseOpenHelper.COL_ISSEND};
         Cursor results = db.query(MyDatabaseOpenHelper.TABLE_NAME, columns,
                 null, null, null, null, null);
 
         //Find column indices
         int idColIndex = results.getColumnIndex(MyDatabaseOpenHelper.COL_ID);
         int messageColIndex = results.getColumnIndex(MyDatabaseOpenHelper.COL_MESSAGES);
+        int issendIndex = results.getColumnIndex(MyDatabaseOpenHelper.COL_ISSEND);
 
         //maybe if send btn then isSend true.
         //iterate over the results, return true if there is a next item:
@@ -103,13 +104,13 @@ public class ChatRoomActivity extends AppCompatActivity {
 
             long id = results.getLong(idColIndex);
             String message = results.getString(messageColIndex);
-
+            boolean isSend = (results.getInt(issendIndex)==1);
             // adapter.getItem(1);
 //            if(adapter.getItem(1).isSend() == true){
 //                messagesList.add(new Message(id, message, true));
 //            }
 //            else{
-            messagesList.add(new Message(message, id));
+            messagesList.add(new Message(id, message, isSend));
             //}
 
         }
@@ -117,6 +118,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         //Create adapter and send to list
         adapter = new MyOwnAdapter();
         theList.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
         //listen for send button clicked
         sendBtn.setOnClickListener(click -> {
@@ -128,6 +130,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
             //put string message in the message column
             newRowValues.put(MyDatabaseOpenHelper.COL_MESSAGES, message);
+            newRowValues.put(MyDatabaseOpenHelper.COL_ISSEND, 1);
             long newId = db.insert(MyDatabaseOpenHelper.TABLE_NAME, null, newRowValues);
 
             //Create new message with new ID
@@ -157,6 +160,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
             //put string message in the message column
             newRowValue.put(MyDatabaseOpenHelper.COL_MESSAGES, message);
+            newRowValue.put(MyDatabaseOpenHelper.COL_ISSEND, 0);
             long newId = db.insert(MyDatabaseOpenHelper.TABLE_NAME, null, newRowValue);
 
             //Create new message with new ID
@@ -218,7 +222,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
             messageRow.setText(thisMessageRow.getText());
 
-            if (thisMessageRow.isSend() == true) {
+            if (thisMessageRow.isSend()) {
                 receivePic.setVisibility(View.INVISIBLE);
                 messageRow.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
             }
