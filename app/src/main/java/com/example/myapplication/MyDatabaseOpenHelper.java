@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.IntegerRes;
 import android.util.Log;
 
+
+// database fields/ column names
 public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "MyDatabaseFile";
     public static final int VERSION_NUM = 1;
